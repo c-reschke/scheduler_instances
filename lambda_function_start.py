@@ -23,7 +23,7 @@ def start_ec2_instances(event):
             
             for reservation in instances['Reservations']:
                 for instance in reservation['Instances']:
-                    if instance['Tags'] is not None : 
+                    if 'Tags' in instance and instance['Tags'] is not None : 
                         for tag in instance['Tags']:
                             try:
                                 if tag['Key'] == 'ScheduledStartStop' and tag['Value'] == 'True':
